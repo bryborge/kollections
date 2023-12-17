@@ -1,0 +1,22 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'config/environments/**/*'
+
+# Customize rules here. For example:
+# Layout/LineLength:
+#   Max: 100
+
+# Rails-specific configuration
+Rails:
+  Enabled: true
+
+# Add other configurations and customizations as needed
