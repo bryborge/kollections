@@ -7,20 +7,9 @@ repos:
       - id: end-of-file-fixer   # add single empty line at EOF
       - id: trailing-whitespace # trim trailing whitespace
       - id: no-commit-to-branch # don't commit to `master` or `main` directly
+
   - repo: https://github.com/mattlqx/pre-commit-ruby
     rev: v1.3.5
     hooks:
       - id: rubocop
       - id: rspec
-  # - repo: local
-  #   hooks:
-  #     - id: rubocop
-  #       name: Run Rubocop linter
-  #       entry: bundle exec rubocop
-  #       language: system
-  # - repo: local
-  #   hooks:
-  #     - id: rspec
-  #       name: Run RSpec tests
-  #       entry: bundle exec rspec
-  #       language: system
