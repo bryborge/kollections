@@ -53,6 +53,7 @@ gem 'bootsnap', require: false
 gem 'devise'
 
 group :development, :test do
+  gem 'factory_bot_rails', require: false
   gem 'rspec-rails', '~> 5.0.0'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
