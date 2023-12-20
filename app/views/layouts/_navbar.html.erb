@@ -19,6 +19,10 @@
         <li class="nav-item">
           <%= link_to "Contact", contact_path, class: "nav-link" %>
         </li>
+        <!-- TODO: Make dynamic based on whether or not user is logged in -->
+        <li class="nav-item">
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+        </li>
       </ul>
     </div>
   </div>
