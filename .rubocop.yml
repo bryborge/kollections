@@ -1,4 +1,6 @@
 require:
+  - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
@@ -11,9 +13,13 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/environments/**/*'
 
-# Customize rules here. For example:
-# Layout/LineLength:
-#   Max: 100
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/**/*'
 
 # Rails-specific configuration
 Rails:
