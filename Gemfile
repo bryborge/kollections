@@ -53,15 +53,17 @@ gem 'bootsnap', require: false
 gem 'devise'
 
 group :development, :test do
-  gem 'factory_bot_rails', require: false
-  gem 'faker'
-  gem 'rspec-rails'
+  gem 'capybara'                            # Acceptance testing framework
+  gem 'factory_bot_rails', require: false   # Test fixtures
+  gem 'faker'                               # Fake data generation
+  gem 'rspec-rails'                         # Behavior-Driven testing tool
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
-  gem 'rubocop', require: false
+  gem 'rubocop', require: false             # Linting
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'webdrivers'                          # Helps Capybara interact w/ the browser
 end
 
 group :development do
