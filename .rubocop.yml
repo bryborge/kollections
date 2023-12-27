@@ -21,6 +21,10 @@ RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/**/*'
 
+RSpec/Style/Documentation:
+  Exclude:
+    - 'db/migrate/**/*'
+
 # Rails-specific configuration
 Rails:
   Enabled: true
