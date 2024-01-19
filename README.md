@@ -1,24 +1,70 @@
-# README
+# Kollections
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Kollections is a Ruby on Rails application designed to provide users with a platform to create and manage their personal
+collections. Whether it's a collection of books, stamps, art, or any other items, Kollections offers an intuitive and
+user-friendly interface to catalog and showcase these items.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+*   **User Authentication:** Secure login and registration functionality.
+*   **Create Collections:** Users can create and name their own collections.
+*   **Item Management:** Add, update, or remove items from collections. *(coming soon!)*
+*   **Search and Filter:** Easily search within collections or filter items by various criteria. *(coming soon!)*
+*   **Responsive Design:** Fully responsive interface for a seamless experience across devices.
 
-* System dependencies
+## Technology Stack
 
-* Configuration
+**Ruby on Rails:** The application is built with Ruby on Rails.
+**MySQL:** Database management.
+**Bootstrap:**For styling and responsive design.
+**RSpec:** Used for writing and running tests.
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+*   Ruby
+*   Rails
+*   MySQL
 
-* Services (job queues, cache servers, search engines, etc.)
+### Installation
 
-* Deployment instructions
+Clone the repository and navigate to the app directory:
 
-* ...
+```sh
+git clone https://github.com/bryborge/kollections.git && cd $_
+```
+
+Install the required gems:
+
+```sh
+bundle install
+```
+
+Setup the database:
+
+```sh
+bundle exec rails db:create db:migrate
+```
+
+### Running the Application
+
+Run the Rails server:
+
+```sh
+bundle exec rails server
+```
+
+Access the application via http://localhost:3000/ in your browser.
+
+## Testing
+
+To run the test suite:
+
+```sh
+bundle exec rspec
+```
+
+## License
+
+This project is licensed under the MIT License.
