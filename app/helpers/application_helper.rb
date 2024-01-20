@@ -13,8 +13,8 @@ module ApplicationHelper
     classes = {
       'notice' => 'alert alert-primary',
       'success' => 'alert alert-success',
-      'error' => 'alert alert-error',
-      'alert' => 'alert alert-error'
+      'error' => 'alert alert-danger',
+      'alert' => 'alert alert-warning'
     }
 
     classes[level]
