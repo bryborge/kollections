@@ -33,4 +33,34 @@ RSpec.describe 'Collections' do
       end
     end
   end
+
+  describe 'GET /show' do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in user
+    end
+
+    context 'when the collection exists' do
+      let(:collection) { create(:collection, user:) }
+
+      it 'responds successfully with an HTTP 200 status code' do
+        get collection_path(collection)
+        expect(response).to be_successful
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'renders the show page' do
+        get collection_path(collection)
+        expect(response.body).to include(collection.name)
+      end
+    end
+
+    context 'when the collection does not exist' do
+      it 'responds with a 404 not found status' do
+        get collection_path(id: -1)
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end

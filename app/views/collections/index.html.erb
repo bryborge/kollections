@@ -2,6 +2,6 @@
 
 <ul>
   <% @collections.each do |c| %>
-    <li><%= c.name %></li>
+    <li><%= link_to c.name, collection_path(c) %></li>
   <% end %>
 </ul>
