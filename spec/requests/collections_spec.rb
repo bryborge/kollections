@@ -3,8 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Collections' do
-  describe 'GET /index' do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
+  describe 'GET #index' do
     context 'when user is not authenticated' do
+      before do
+        sign_out user
+      end
+
       it 'redirects to the login page' do
         get collections_path
         expect(response).to redirect_to(new_user_session_path)
@@ -12,12 +22,7 @@ RSpec.describe 'Collections' do
     end
 
     context 'when user is authenticated' do
-      let(:user) { create(:user) }
       let!(:collections) { create_list(:collection, 2, user:) }
-
-      before do
-        sign_in user
-      end
 
       it 'responds successfully with an HTTP 200 status code' do
         get collections_path
@@ -34,13 +39,7 @@ RSpec.describe 'Collections' do
     end
   end
 
-  describe 'GET /show' do
-    let(:user) { create(:user) }
-
-    before do
-      sign_in user
-    end
-
+  describe 'GET #show' do
     context 'when the collection exists' do
       let(:collection) { create(:collection, user:) }
 
@@ -60,6 +59,58 @@ RSpec.describe 'Collections' do
       it 'responds with a 404 not found status' do
         get collection_path(id: -1)
         expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
+
+  describe 'GET #new' do
+    it 'responds successfully with an HTTP 200 status code' do
+      get new_collection_path
+      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'renders the new collection form' do
+      get new_collection_path
+      expect(response.body).to include('form')
+      expect(response.body).to include('name="collection[name]"')
+      expect(response.body).to include('name="collection[description]"')
+    end
+  end
+
+  describe 'POST #create' do
+    context 'with valid attributes' do
+      let(:valid_attributes) { { collection: attributes_for(:collection) } }
+
+      it 'creates a new collection' do
+        expect do
+          post collections_path, params: valid_attributes
+        end.to change(Collection, :count).by(1)
+      end
+
+      it 'redirects to the collections page' do
+        post collections_path, params: valid_attributes
+        expect(response).to redirect_to(Collection.last)
+      end
+    end
+
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { { collection: attributes_for(:collection, name: nil) } }
+
+      it 'does not save the new collection' do
+        expect do
+          post collections_path, params: invalid_attributes
+        end.not_to change(Collection, :count)
+      end
+
+      it "returns a 200 status code indicating the 'new' template is re-rendered" do
+        post collections_path, params: invalid_attributes
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'shows validation errors' do
+        post collections_path, params: invalid_attributes
+        expect(response.body).to include('can&#39;t be blank')
       end
     end
   end

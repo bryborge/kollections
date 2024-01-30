@@ -5,3 +5,7 @@
     <li><%= link_to c.name, collection_path(c) %></li>
   <% end %>
 </ul>
+
+<div>
+  <%= link_to "New Collection", new_collection_path, class: "btn btn-primary", role: "button" %>
+</div>
