@@ -30,3 +30,4 @@
 en:
   notices:
     collection_created: "Collection was successfully created."
+    collection_updated: "Collection was successfully updated."

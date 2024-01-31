@@ -3,3 +3,7 @@
 <% if @collection.description %>
   <p><%= @collection.description %></p>
 <% end %>
+
+<div>
+  <%= link_to "Edit Collection", edit_collection_path(@collection), class: "btn btn-primary", role: "button" %>
+</div>

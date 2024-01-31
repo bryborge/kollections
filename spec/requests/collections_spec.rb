@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Collections' do
   let(:user) { create(:user) }
+  let(:collection) { create(:collection, user:) }
 
   before do
     sign_in user
@@ -41,8 +42,6 @@ RSpec.describe 'Collections' do
 
   describe 'GET #show' do
     context 'when the collection exists' do
-      let(:collection) { create(:collection, user:) }
-
       it 'responds successfully with an HTTP 200 status code' do
         get collection_path(collection)
         expect(response).to be_successful
@@ -111,6 +110,48 @@ RSpec.describe 'Collections' do
       it 'shows validation errors' do
         post collections_path, params: invalid_attributes
         expect(response.body).to include('can&#39;t be blank')
+      end
+    end
+  end
+
+  describe 'GET /collections/:id/edit' do
+    it 'renders the edit form' do
+      get edit_collection_path(collection)
+      expect(response).to be_successful
+      expect(response.body).to include('Edit Collection')
+    end
+  end
+
+  describe 'PATCH /collections/:id' do
+    context 'with valid attributes' do
+      let(:valid_attributes) { { name: 'Updated Collection Name', description: 'Updated Description' } }
+
+      it 'updates the collection' do
+        patch collection_path(collection), params: { collection: valid_attributes }
+        collection.reload
+        expect(collection.name).to eq(valid_attributes[:name])
+        expect(collection.description).to eq(valid_attributes[:description])
+      end
+
+      it 'redirects to the collection' do
+        patch collection_path(collection), params: { collection: valid_attributes }
+        expect(response).to redirect_to(collection_path(collection))
+      end
+    end
+
+    context 'with invalid attributes' do
+      let(:invalid_attributes) { { name: '', description: 'Still Updated Description' } }
+
+      it 'does not update the collection' do
+        patch collection_path(collection), params: { collection: invalid_attributes }
+        original_name = collection.name
+        collection.reload
+        expect(collection.name).to eq(original_name)
+      end
+
+      it "re-renders the 'edit' form" do
+        patch collection_path(collection), params: { collection: invalid_attributes }
+        expect(response.body).to include('Edit Collection')
       end
     end
   end
