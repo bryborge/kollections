@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Collections' do
   let(:user) { create(:user) }
-  let(:collection) { create(:collection, user:) }
+  let!(:collection) { create(:collection, user:) }
 
   before do
     sign_in user
@@ -153,6 +153,27 @@ RSpec.describe 'Collections' do
         patch collection_path(collection), params: { collection: invalid_attributes }
         expect(response.body).to include('Edit Collection')
       end
+    end
+  end
+
+  describe 'DELETE /collections/:id' do
+    it 'deletes the collection' do
+      expect do
+        delete collection_path(collection)
+      end.to change(Collection, :count).by(-1)
+    end
+
+    it 'redirects to the collections index' do
+      delete collection_path(collection)
+      expect(response).to redirect_to(collections_path)
+      follow_redirect!
+      expect(response.body).to include('Collections')
+    end
+
+    it 'sets a notice that the collection was deleted' do
+      delete collection_path(collection)
+      follow_redirect!
+      expect(flash[:notice]).to match(I18n.t('notices.collection_destroyed'))
     end
   end
 end
