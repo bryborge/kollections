@@ -10,7 +10,7 @@ RSpec.describe 'Collections' do
     sign_in user
   end
 
-  describe 'GET #index' do
+  describe 'GET /collections' do
     context 'when user is not authenticated' do
       before do
         sign_out user
@@ -40,7 +40,7 @@ RSpec.describe 'Collections' do
     end
   end
 
-  describe 'GET #show' do
+  describe 'GET /collections/:id' do
     context 'when the collection exists' do
       it 'responds successfully with an HTTP 200 status code' do
         get collection_path(collection)
@@ -62,7 +62,7 @@ RSpec.describe 'Collections' do
     end
   end
 
-  describe 'GET #new' do
+  describe 'GET /collections/new' do
     it 'responds successfully with an HTTP 200 status code' do
       get new_collection_path
       expect(response).to have_http_status(:success)
@@ -77,7 +77,7 @@ RSpec.describe 'Collections' do
     end
   end
 
-  describe 'POST #create' do
+  describe 'POST /collections/create' do
     context 'with valid attributes' do
       let(:valid_attributes) { { collection: attributes_for(:collection) } }
 

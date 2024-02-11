@@ -20,7 +20,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.new
   end
 
-  # GET /collections/{id}/edit
+  # GET /collections/:id/edit
   def edit
     @collection = Collection.find(params[:id])
   end
@@ -36,7 +36,7 @@ class CollectionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /collections/{id}
+  # PATCH/PUT /collections/:id
   def update
     if @collection.update(collection_params)
       redirect_to @collection, notice: I18n.t('notices.collection_updated')
