@@ -19,7 +19,14 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Exclude:
-    - 'spec/features/**/*'
+    - 'spec/**/*'
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/Style/Documentation:
+  Exclude:
+    - 'db/migrate/**/*'
 
 # Rails-specific configuration
 Rails:

@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  notices:
+    collection_created: "Collection was successfully created."
+    collection_updated: "Collection was successfully updated."
+    collection_destroyed: "Collection was successfully destroyed."
