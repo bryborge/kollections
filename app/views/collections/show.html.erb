@@ -4,6 +4,16 @@
   <p><%= @collection.description %></p>
 <% end %>
 
+<% if @collection.items.any? %>
+  <ul>
+    <% @collection.items&.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No items.</p>
+<% end %>
+
 <div class="d-flex">
   <%= link_to "Edit Collection", edit_collection_path(@collection), class: "btn btn-primary me-2", role: "button" %>
   <%= button_to "Delete Collection", collection_path(@collection),
