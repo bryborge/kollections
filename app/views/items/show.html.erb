@@ -8,4 +8,6 @@
   <p>Acquired on: <%= @item.acquisition_date %></p>
 <% end %>
 
-<%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
+<div class="d-flex">
+  <%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
+</div>

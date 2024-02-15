@@ -23,7 +23,10 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Update", class: "btn btn-primary" %>
+  <div class="d-flex">
+    <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
+    <div class="actions">
+      <%= form.submit "Update", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>
