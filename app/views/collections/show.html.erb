@@ -7,7 +7,9 @@
 <% if @collection.items.any? %>
   <ul>
     <% @collection.items&.each do |item| %>
-      <li><%= item.name %></li>
+      <li>
+        <%= link_to item.name, collection_item_path(@collection, item) %>
+      </li>
     <% end %>
   </ul>
 <% else %>
@@ -15,6 +17,7 @@
 <% end %>
 
 <div class="d-flex">
+  <%= link_to "Back to Collections", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>
   <%= link_to "Edit Collection", edit_collection_path(@collection), class: "btn btn-primary me-2", role: "button" %>
   <%= button_to "Delete Collection", collection_path(@collection),
               method: :delete,
