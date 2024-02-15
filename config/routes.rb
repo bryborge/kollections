@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
 
   resources :collections do
-    resources :items
+    resources :collectibles
   end
 end

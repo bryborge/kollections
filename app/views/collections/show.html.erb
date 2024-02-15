@@ -4,16 +4,16 @@
   <p><%= @collection.description %></p>
 <% end %>
 
-<% if @collection.items.any? %>
+<% if @collection.collectibles.any? %>
   <ul>
-    <% @collection.items&.each do |item| %>
+    <% @collection.collectibles&.each do |collectible| %>
       <li>
-        <%= link_to item.name, collection_item_path(@collection, item) %>
+        <%= link_to collectible.name, collection_collectible_path(@collection, collectible) %>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>No items.</p>
+  <p>No collectibles.</p>
 <% end %>
 
 <div class="d-flex">
