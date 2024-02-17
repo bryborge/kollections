@@ -23,7 +23,7 @@ RSpec.describe 'Collectibles' do
       end
     end
 
-    context 'when the collectable collectible exists' do
+    context 'when the collectible exists' do
       it 'responds successfully with an HTTP 200 status code' do
         get collection_collectible_path(collection, collectible)
         expect(response).to be_successful
@@ -36,7 +36,7 @@ RSpec.describe 'Collectibles' do
       end
     end
 
-    context 'when the collectable collectible does not exist' do
+    context 'when the collectible does not exist' do
       it 'response with a 404 not found status' do
         get collection_collectible_path(collection, id: -1)
         expect(response).to have_http_status(:not_found)

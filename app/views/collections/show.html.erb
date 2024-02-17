@@ -5,16 +5,29 @@
 <% end %>
 
 <% if @collection.collectibles.any? %>
-  <ul>
-    <% @collection.collectibles&.each do |collectible| %>
-      <li>
-        <%= link_to collectible.name, collection_collectible_path(@collection, collectible) %>
-      </li>
-    <% end %>
-  </ul>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Condition</th>
+        <th scope="col">Acquisition Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.collectibles&.each do |collectible| %>
+        <tr>
+          <td><%= link_to collectible.name, collection_collectible_path(@collection, collectible) %></td>
+          <td><%= collectible.condition %></td>
+          <td><%= collectible.acquisition_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p>No collectibles.</p>
 <% end %>
+
+<%= link_to "New Collectible", new_collection_collectible_path(@collection.id), class: "btn btn-primary me-2", role: "button" %>
 
 <div class="d-flex">
   <%= link_to "Back to Collections", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>
