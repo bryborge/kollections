@@ -9,7 +9,6 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Condition</th>
         <th scope="col">Acquisition Date</th>
       </tr>
     </thead>
@@ -17,8 +16,7 @@
       <% @collection.items.each do |item| %>
         <tr>
           <td><%= link_to item.name, collection_item_path(@collection, item) %></td>
-          <td><%= item.condition %></td>
-          <td><%= item.acquisition_date %></td>
+          <td><%= item.acquisition_date.strftime('%b %e, %Y') %></td>
         </tr>
       <% end %>
     </tbody>

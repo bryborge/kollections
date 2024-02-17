@@ -1,15 +1,11 @@
 <h1><%= @item.name.titleize %></h1>
 
-<% if @item.description %>
+<% unless @item.description.blank? %>
   <p><%= @item.description %></p>
 <% end %>
 
-<% if @item.condition %>
-  <p>Condition: <%= @item.condition %></p>
-<% end %>
-
-<% if @item.acquisition_date %>
-  <p>Acquired on: <%= @item.acquisition_date %></p>
+<% unless @item.acquisition_date.blank? %>
+  <p>Acquired on: <%= @item.acquisition_date.strftime('%b %e, %Y') %></p>
 <% end %>
 
 <div class="d-flex">

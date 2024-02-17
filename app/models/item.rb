@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Item
+# A Collection Item
 class Item < ApplicationRecord
   belongs_to :collection
 

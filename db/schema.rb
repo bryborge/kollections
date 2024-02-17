@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_044607) do
     t.integer "collection_id"
     t.string "name"
     t.text "description"
-    t.string "condition"
     t.date "acquisition_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
