@@ -14,16 +14,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_044607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "collectibles", force: :cascade do |t|
-    t.integer "collection_id"
-    t.string "name"
-    t.text "description"
-    t.string "condition"
-    t.date "acquisition_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -31,6 +21,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_044607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "collection_id"
+    t.string "name"
+    t.text "description"
+    t.string "condition"
+    t.date "acquisition_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

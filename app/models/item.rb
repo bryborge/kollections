@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Collectible
-class Collectible < ApplicationRecord
+# Item
+class Item < ApplicationRecord
   belongs_to :collection
 
   validates :name, presence: true

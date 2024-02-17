@@ -8,7 +8,7 @@ user-friendly interface to catalog and showcase these items.
 
 *   **User Authentication:** Secure login and registration functionality.
 *   **Create Collections:** Users can create and name their own collections.
-*   **Item Management:** Add, update, or remove collectible items from collections.
+*   **Item Management:** Add, update, or remove items from collections.
 *   **Search and Filter:** Easily search within collections or filter items by various criteria. *(coming soon!)*
 *   **Responsive Design:** Fully responsive interface for a seamless experience across devices.
 

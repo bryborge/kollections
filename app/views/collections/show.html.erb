@@ -4,7 +4,7 @@
   <p><%= @collection.description %></p>
 <% end %>
 
-<% if @collection.collectibles.any? %>
+<% if @collection.items.any? %>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -14,20 +14,20 @@
       </tr>
     </thead>
     <tbody>
-      <% @collection.collectibles&.each do |collectible| %>
+      <% @collection.items.each do |item| %>
         <tr>
-          <td><%= link_to collectible.name, collection_collectible_path(@collection, collectible) %></td>
-          <td><%= collectible.condition %></td>
-          <td><%= collectible.acquisition_date %></td>
+          <td><%= link_to item.name, collection_item_path(@collection, item) %></td>
+          <td><%= item.condition %></td>
+          <td><%= item.acquisition_date %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% else %>
-  <p>No collectibles.</p>
+  <p>No items.</p>
 <% end %>
 
-<%= link_to "New Collectible", new_collection_collectible_path(@collection.id), class: "btn btn-primary me-2", role: "button" %>
+<%= link_to "New Item", new_collection_item_path(@collection.id), class: "btn btn-primary me-2", role: "button" %>
 
 <div class="d-flex">
   <%= link_to "Back to Collections", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>

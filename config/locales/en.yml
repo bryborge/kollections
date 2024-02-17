@@ -32,4 +32,4 @@ en:
     collection_created: "Collection was successfully created."
     collection_updated: "Collection was successfully updated."
     collection_destroyed: "Collection was successfully destroyed."
-    collectible_created: "Collectible was successfully created."
+    item_created: "Item was successfully created."

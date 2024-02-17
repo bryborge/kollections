@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateCollectibles < ActiveRecord::Migration[7.1]
+class CreateItems < ActiveRecord::Migration[7.1]
   def change
-    create_table :collectibles do |t|
+    create_table :items do |t|
       t.integer :collection_id
       t.string :name
       t.text :description

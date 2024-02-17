@@ -1,12 +1,12 @@
-<h1>New Collectible</h1>
+<h1>New Item</h1>
 
-<%= form_with(model: [@collection, @collectible], local: true) do |form| %>
-  <% if @collectible.errors.any? %>
+<%= form_with(model: [@collection, @item], local: true) do |form| %>
+  <% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@collectible.errors.count, "error") %> prohibited this collectible from being saved:</h2>
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
       <ul>
-      <% @collectible.errors.full_messages.each do |message| %>
+      <% @item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -26,6 +26,11 @@
   <div class="mb-3">
     <%= form.label :condition, class: "form-label" %>
     <%= form.text_field :condition, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :acquisition_date, class: "form-label" %>
+    <%= form.text_field :acquisition_date, class: "form-control" %>
   </div>
 
   <div class="d-flex">

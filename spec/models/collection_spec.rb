@@ -26,14 +26,14 @@ RSpec.describe Collection do
       expect(collection.user_id).to eq(user.id)
     end
 
-    it 'has many collectibles' do
-      create_list(:collectible, 3, collection:)
-      expect(collection&.collectibles&.length).to eq 3
+    it 'has many items' do
+      create_list(:item, 3, collection:)
+      expect(collection&.items&.length).to eq 3
     end
 
-    it 'destroys the associated collectibles when collection is deleted' do
-      create_list(:collectible, 3, collection:)
-      expect { collection.destroy }.to change(Collectible, :count).by(-3)
+    it 'destroys the associated items when collection is deleted' do
+      create_list(:item, 3, collection:)
+      expect { collection.destroy }.to change(Item, :count).by(-3)
     end
   end
 end
