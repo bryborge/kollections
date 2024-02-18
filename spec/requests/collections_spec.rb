@@ -167,7 +167,7 @@ RSpec.describe 'Collections' do
       delete collection_path(collection)
       expect(response).to redirect_to(collections_path)
       follow_redirect!
-      expect(response.body).to include('Collections')
+      expect(response.body).to include('Your Collections')
     end
 
     it 'sets a notice that the collection was deleted' do
