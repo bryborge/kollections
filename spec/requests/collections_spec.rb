@@ -50,7 +50,7 @@ RSpec.describe 'Collections' do
 
       it 'renders the show page' do
         get collection_path(collection)
-        expect(response.body).to include(collection.name)
+        expect(response.body).to include(collection.name.titleize)
       end
     end
 
