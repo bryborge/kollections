@@ -21,14 +21,14 @@ RSpec.describe 'Collections' do
 
     # Verify each collection is listed with a correct link
     collections.each do |collection|
-      expect(page).to have_link(collection.name, href: collection_path(collection))
+      expect(page).to have_link('View', href: collection_path(collection))
     end
 
-    # Verify the "New Collection" button exists and can be clicked
-    expect(page).to have_link('New Collection', href: new_collection_path)
-    click_link 'New Collection'
+    # Verify the "Add +" button exists and can be clicked
+    expect(page).to have_link('Add +', href: new_collection_path)
+    click_link 'Add +'
 
-    # Verify that clicking the "New Collection" button takes the user to the new collection page
+    # Verify that clicking the "Add +" button takes the user to the new collection page
     # Update the path as per your routes
     expect(page).to have_current_path(new_collection_path)
   end

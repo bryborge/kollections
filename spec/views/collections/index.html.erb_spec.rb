@@ -24,12 +24,12 @@ RSpec.describe 'collections/index' do
     collections = [collection_one, collection_two]
 
     # Check for each collection link
-    expect(rendered).to have_link('Collection One', href: collection_path(collections.first))
-    expect(rendered).to have_link('Collection Two', href: collection_path(collections.second))
+    expect(rendered).to have_link('View', href: collection_path(collections.first))
+    expect(rendered).to have_link('View', href: collection_path(collections.second))
   end
 
-  it "displays the 'New Collection' button" do
+  it "displays the 'Add +' button" do
     render
-    expect(rendered).to have_link('New Collection', href: new_collection_path)
+    expect(rendered).to have_link('Add +', href: new_collection_path)
   end
 end
