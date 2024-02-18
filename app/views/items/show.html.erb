@@ -1,0 +1,15 @@
+<%= render 'items/partials/tabnav' %>
+
+<h1><%= @item.name.titleize %></h1>
+
+<% unless @item.description.blank? %>
+  <p><%= @item.description %></p>
+<% end %>
+
+<% unless @item.acquisition_date.blank? %>
+  <p>Acquired on: <%= @item.acquisition_date.strftime('%b %e, %Y') %></p>
+<% end %>
+
+<div class="d-flex">
+  <%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
+</div>

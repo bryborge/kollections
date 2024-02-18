@@ -1,13 +1,39 @@
+<%= render 'collections/partials/tabnav' %>
+
 <h1><%= @collection.name.titleize %></h1>
 
 <% if @collection.description %>
   <p><%= @collection.description %></p>
 <% end %>
 
+<p>Total items: <%= @collection.items.count %></p>
+
+<% if @collection.items.any? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Acquisition Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.items.each do |item| %>
+        <tr>
+          <td><%= link_to item.name, collection_item_path(@collection, item) %></td>
+          <td><%= item.acquisition_date.strftime('%b %e, %Y') %></td>
+          <td>
+            <%= link_to "Edit", edit_collection_item_path(@collection, item), class: "btn btn-sm btn-warning" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No items to show.</p>
+<% end %>
+
 <div class="d-flex">
-  <%= link_to "Edit Collection", edit_collection_path(@collection), class: "btn btn-primary me-2", role: "button" %>
-  <%= button_to "Delete Collection", collection_path(@collection),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete this collection?" },
-              class: "btn btn-danger", role: "button" %>
+  <%= link_to "Back to Collections", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>
+  <%= link_to "Add +", new_collection_item_path(@collection.id), class: "btn btn-success me-2", role: "button" %>
 </div>

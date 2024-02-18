@@ -24,7 +24,7 @@ RSpec/MultipleExpectations:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
-RSpec/Style/Documentation:
+Style/Documentation:
   Exclude:
     - 'db/migrate/**/*'
 

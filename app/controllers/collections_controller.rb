@@ -11,19 +11,15 @@ class CollectionsController < ApplicationController
   end
 
   # GET /collection/:id
-  def show
-    @collection = Collection.find(params[:id])
-  end
+  def show; end
 
   # GET /collections/new
   def new
-    @collection = Collection.new
+    @collection = current_user.collections.build
   end
 
   # GET /collections/:id/edit
-  def edit
-    @collection = Collection.find(params[:id])
-  end
+  def edit; end
 
   # POST /collections
   def create

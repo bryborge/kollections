@@ -32,3 +32,10 @@ en:
     collection_created: "Collection was successfully created."
     collection_updated: "Collection was successfully updated."
     collection_destroyed: "Collection was successfully destroyed."
+    item_created: "Item was successfully created."
+    item_updated: "Item was successfully updated."
+    item_destroyed: "Item was successfully destroyed."
+  alerts:
+    collection_not_found: "Collection not found."
+    item_not_found: "Item not found."
+    item_not_destroyed: "Item could not be destroyed."

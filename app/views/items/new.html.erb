@@ -1,12 +1,12 @@
-<h1>New Collection</h1>
+<h1>New Item</h1>
 
-<%= form_with(model: @collection, local: true) do |form| %>
-  <% if @collection.errors.any? %>
+<%= form_with(model: [@collection, @item], local: true) do |form| %>
+  <% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
       <ul>
-      <% @collection.errors.full_messages.each do |message| %>
+      <% @item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -23,8 +23,13 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :acquisition_date, class: "form-label" %>
+    <%= form.text_field :acquisition_date, class: "form-control" %>
+  </div>
+
   <div class="d-flex">
-    <%= link_to "Cancel", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>
+    <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
     <div class="actions">
       <%= form.submit "Create", class: "btn btn-success" %>
     </div>
