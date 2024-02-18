@@ -4,7 +4,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_collection
-  before_action :set_item, only: %i[show edit update]
+  before_action :set_item, only: %i[show edit update destroy]
 
   # GET /collections/:collection_id/items/:id
   def show; end
@@ -35,6 +35,12 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /collections/:collection_id/items/:id
+  def destroy
+    @item.destroy
+    redirect_to @collection, notice: I18n.t('notices.item_destroyed')
   end
 
   private
