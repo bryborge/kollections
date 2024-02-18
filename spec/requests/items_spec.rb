@@ -32,7 +32,7 @@ RSpec.describe 'Items' do
 
       it 'renders the show page' do
         get collection_item_path(collection, item)
-        expect(response.body).to include(item.name)
+        expect(response.body).to include(item.name.titleize)
       end
     end
 
@@ -150,7 +150,7 @@ RSpec.describe 'Items' do
       delete collection_item_path(collection, item)
       expect(response).to redirect_to(collection_path(collection))
       follow_redirect!
-      expect(response.body).to include(collection.name)
+      expect(response.body).to include(collection.name.titleize)
     end
 
     it 'sets a notice that the item was deleted' do

@@ -2,8 +2,9 @@
 
 FactoryBot.define do
   factory :collection do
-    name { 'My Collection' }
-    description { 'The description of my collection.' }
     user
+
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph }
   end
 end

@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :item do
     collection
 
-    name { 'My Item' }
-    description { 'The description of my item.' }
+    name { Faker::Book.title }
+    description { Faker::Lorem.paragraph }
     acquisition_date { Time.zone.today }
   end
 end
