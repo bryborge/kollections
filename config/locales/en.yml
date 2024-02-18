@@ -33,3 +33,4 @@ en:
     collection_updated: "Collection was successfully updated."
     collection_destroyed: "Collection was successfully destroyed."
     item_created: "Item was successfully created."
+    item_updated: "Item was successfully updated."

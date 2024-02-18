@@ -14,6 +14,7 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Acquisition Date</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
         <tr>
           <td><%= link_to item.name, collection_item_path(@collection, item) %></td>
           <td><%= item.acquisition_date.strftime('%b %e, %Y') %></td>
+          <td>
+            <%= link_to "Edit", edit_collection_item_path(@collection, item), class: "btn btn-sm btn-warning" %>
+          </td>
         </tr>
       <% end %>
     </tbody>
@@ -30,6 +34,6 @@
 <% end %>
 
 <div class="d-flex">
-  <%= link_to "Add +", new_collection_item_path(@collection.id), class: "btn btn-primary me-2", role: "button" %>
   <%= link_to "Back to Collections", collections_path, class: "btn btn-outline-secondary me-2", role: "button" %>
+  <%= link_to "Add +", new_collection_item_path(@collection.id), class: "btn btn-success me-2", role: "button" %>
 </div>

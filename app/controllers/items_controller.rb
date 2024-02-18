@@ -4,17 +4,18 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_collection
-  before_action :set_item, only: %i[show]
+  before_action :set_item, only: %i[show edit update]
 
   # GET /collections/:collection_id/items/:id
-  def show
-    @item = Item.find(params[:id])
-  end
+  def show; end
 
-  # GET /collections/:collection_id/Ims/new
+  # GET /collections/:collection_id/items/new
   def new
     @item = Item.new
   end
+
+  # GET /collections/:collection_id/items/:id/edit
+  def edit; end
 
   # POST /collections/:collection_id/items
   def create
@@ -24,6 +25,15 @@ class ItemsController < ApplicationController
       redirect_to [@collection, @item], notice: I18n.t('notices.item_created')
     else
       render :new
+    end
+  end
+
+  # PATCH/PUT /collections/:collection_id/items/:id
+  def update
+    if @item.update(item_params)
+      redirect_to [@collection, @item], notice: I18n.t('notices.item_updated')
+    else
+      render :edit
     end
   end
 

@@ -118,7 +118,7 @@ RSpec.describe 'Collections' do
     it 'renders the edit form' do
       get edit_collection_path(collection)
       expect(response).to be_successful
-      expect(response.body).to include('Edit Collection')
+      expect(response.body).to include('General')
     end
   end
 
@@ -151,7 +151,7 @@ RSpec.describe 'Collections' do
 
       it "re-renders the 'edit' form" do
         patch collection_path(collection), params: { collection: invalid_attributes }
-        expect(response.body).to include('Edit Collection')
+        expect(response.body).to include('General')
       end
     end
   end

@@ -2,7 +2,7 @@
 
 <h2>General</h2>
 
-<ul class="list-group">
+<ul class="list-group mb-4">
   <li class="list-group-item">
     <%= form_with(model: @collection, local: true) do |form| %>
     <% if @collection.errors.any? %>
@@ -30,7 +30,7 @@
     <div class="d-flex">
       <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
       <div class="actions">
-        <%= form.submit "Update", class: "btn btn-success" %>
+        <%= form.submit "Update", class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
@@ -38,6 +38,7 @@
 </ul>
 
 <h2>Danger Zone</h2>
+
 <ul class="list-group">
   <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
     <div class="ms-2 me-auto">

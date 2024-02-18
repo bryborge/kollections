@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs mb-4">
+  <li class="nav-item">
+    <%= link_to "Details", collection_item_path(@collection, @item), class: ["nav-link", ("active" if current_page?(collection_item_path(@collection, @item)))] %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Manage", edit_collection_item_path(@collection, @item), class: ["nav-link", ("active" if current_page?(edit_collection_item_path(@collection, @item)))] %>
+  </li>
+</ul>
