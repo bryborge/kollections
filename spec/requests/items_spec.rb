@@ -37,9 +37,9 @@ RSpec.describe 'Items' do
     end
 
     context 'when the item does not exist' do
-      it 'response with a 404 not found status' do
+      it 'responds with a 302 redirect status' do
         get collection_item_path(collection, id: -1)
-        expect(response).to have_http_status(:not_found)
+        expect(response).to have_http_status(:found)
       end
     end
   end

@@ -15,7 +15,7 @@ class CollectionsController < ApplicationController
 
   # GET /collections/new
   def new
-    @collection = Collection.new
+    @collection = current_user.collections.build
   end
 
   # GET /collections/:id/edit
