@@ -1,6 +1,9 @@
 <%= render 'collections/partials/tabnav' %>
 
-<h2>General</h2>
+<h1><%= @collection.name.titleize %></h1>
+<span class="badge pill text-bg-dark"><%= @collection.kind %></span>
+
+<h2 class="h3">General</h2>
 
 <ul class="list-group mb-4">
   <li class="list-group-item">
@@ -42,7 +45,7 @@
   </li>
 </ul>
 
-<h2>Danger Zone</h2>
+<h2 class="h3">Danger Zone</h2>
 
 <ul class="list-group mb-4">
   <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
