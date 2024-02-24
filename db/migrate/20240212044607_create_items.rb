@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
   def change
     create_table :items do |t|
       t.integer :collection_id
-      t.string :name
+      t.string :name, null: false
       t.text :description
       t.date :acquisition_date
 

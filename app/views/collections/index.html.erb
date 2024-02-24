@@ -10,6 +10,7 @@
         </div>
         <div class="card-body">
           <p class="card-text"><%= collection.description %></p>
+          <p class="card-text">Kind: <%= collection.kind %></p>
           <%= link_to "View", collection_path(collection), class: "btn btn-outline-dark", role: "button" %>
         </div>
       </div>

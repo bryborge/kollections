@@ -6,5 +6,6 @@ FactoryBot.define do
 
     name { Faker::Lorem.word }
     description { Faker::Lorem.paragraph }
+    kind { Faker::Lorem.word }
   end
 end

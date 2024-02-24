@@ -6,6 +6,8 @@
   <p><%= @collection.description %></p>
 <% end %>
 
+<p><%= @collection.kind %></p>
+
 <p>Total items: <%= @collection.items.count %></p>
 
 <% if @collection.items.any? %>

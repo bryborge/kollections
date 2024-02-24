@@ -20,6 +20,13 @@ RSpec.describe Collection do
     expect(no_name_collection.errors[:name]).to include("can't be blank")
   end
 
+  it 'requires a kind' do
+    no_type_collection = described_class.new(kind: nil, user_id: user.id)
+
+    expect(no_type_collection).not_to be_valid
+    expect(no_type_collection.errors[:kind]).to include("can't be blank")
+  end
+
   describe 'associations' do
     it 'belongs to a user' do
       expect(collection).to be_valid

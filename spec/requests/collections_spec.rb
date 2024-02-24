@@ -74,6 +74,7 @@ RSpec.describe 'Collections' do
       expect(response.body).to include('form')
       expect(response.body).to include('name="collection[name]"')
       expect(response.body).to include('name="collection[description]"')
+      expect(response.body).to include('name="collection[kind]"')
     end
   end
 
@@ -94,7 +95,7 @@ RSpec.describe 'Collections' do
     end
 
     context 'with invalid attributes' do
-      let(:invalid_attributes) { { collection: attributes_for(:collection, name: nil) } }
+      let(:invalid_attributes) { { collection: attributes_for(:collection, name: nil, kind: nil) } }
 
       it 'does not save the new collection' do
         expect do
@@ -140,7 +141,7 @@ RSpec.describe 'Collections' do
     end
 
     context 'with invalid attributes' do
-      let(:invalid_attributes) { { name: '', description: 'Still Updated Description' } }
+      let(:invalid_attributes) { { name: '', description: 'Still Updated Description', kind: '' } }
 
       it 'does not update the collection' do
         patch collection_path(collection), params: { collection: invalid_attributes }
