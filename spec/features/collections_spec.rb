@@ -40,7 +40,7 @@ RSpec.describe 'Collections' do
     context 'when User does not have associated collections' do
       before { visit collections_path }
 
-      it "Displays a 'no collections' message" do
+      it 'does not display any collections' do
         # Verify no collections message is present and no collections are displayed
         expect(page).to have_content("You don't have any collections.")
         expect(page).not_to have_css('.card h-100')
