@@ -3,17 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'User deletes a collection' do
-  let(:user) { create(:user) }
+  include_context 'when user signed in'
+
   let(:collection) { create(:collection, user:) }
 
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign in'
-
-    visit edit_collection_path(collection)
-  end
+  before { visit edit_collection_path(collection) }
 
   it 'succeeds' do
     click_button 'Delete Collection'

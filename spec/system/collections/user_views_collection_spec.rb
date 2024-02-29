@@ -3,15 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'User views a collection' do
-  let(:user) { create(:user) }
-  let(:collection) { create(:collection, user:) }
+  include_context 'when user signed in'
 
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign in'
-  end
+  let(:collection) { create(:collection, user:) }
 
   context "when the collection doesn't exist" do
     before { visit collection_path(id: -1) }

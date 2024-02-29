@@ -3,14 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User views all of their collections' do
-  let(:user) { create(:user) }
-
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign in'
-  end
+  include_context 'when user signed in'
 
   it 'navigates to new collection page' do
     click_link 'Add +'

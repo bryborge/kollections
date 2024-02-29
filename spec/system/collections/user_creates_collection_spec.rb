@@ -3,16 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'User creates collection' do
-  let(:user) { create(:user) }
+  include_context 'when user signed in'
 
-  before do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign in'
-
-    visit new_collection_path
-  end
+  before { visit new_collection_path }
 
   it 'with valid attributes' do
     fill_in 'Name', with: 'Comic Books'
