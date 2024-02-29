@@ -52,7 +52,11 @@ class CollectionsController < ApplicationController
   private
 
   def set_collection
-    @collection = current_user.collections.find(params[:id])
+    @collection = current_user.collections.find_by(id: params[:id])
+
+    return if @collection
+
+    redirect_to collections_url, alert: I18n.t('alerts.collection_not_found')
   end
 
   def collection_params

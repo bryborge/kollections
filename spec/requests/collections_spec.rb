@@ -55,9 +55,9 @@ RSpec.describe 'Collections' do
     end
 
     context 'when the collection does not exist' do
-      it 'responds with a 404 not found status' do
+      it 'responds with a 302 status' do
         get collection_path(id: -1)
-        expect(response).to have_http_status(:not_found)
+        expect(response).to have_http_status(:found)
       end
     end
   end
