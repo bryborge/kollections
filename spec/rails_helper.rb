@@ -39,6 +39,11 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  # System test configuration
+  config.before(:each, type: :system) do
+    driven_by :rack_test # rack_test by default, for performance
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
