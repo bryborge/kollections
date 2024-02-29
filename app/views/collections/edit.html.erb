@@ -1,6 +1,9 @@
 <%= render 'collections/partials/tabnav' %>
 
-<h2>General</h2>
+<h1><%= @collection.name.titleize %></h1>
+<span class="badge pill text-bg-dark"><%= @collection.kind %></span>
+
+<h2 class="h3">General</h2>
 
 <ul class="list-group mb-4">
   <li class="list-group-item">
@@ -27,6 +30,11 @@
       <%= form.text_area :description, class: "form-control" %>
     </div>
 
+    <div class="mb-3">
+      <%= form.label :kind, class: "form-label" %>
+      <%= form.text_field :kind, class: "form-control" %>
+    </div>
+
     <div class="d-flex">
       <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
       <div class="actions">
@@ -37,7 +45,7 @@
   </li>
 </ul>
 
-<h2>Danger Zone</h2>
+<h2 class="h3">Danger Zone</h2>
 
 <ul class="list-group mb-4">
   <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
