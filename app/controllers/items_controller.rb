@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to [@collection, @item], notice: I18n.t('notices.item_created')
     else
+      flash.now[:alert] = I18n.t('alerts.item_not_created')
       render :new
     end
   end
