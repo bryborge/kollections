@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to [@collection, @item], notice: I18n.t('notices.item_updated')
     else
+      flash.now[:alert] = I18n.t('alerts.item_not_updated')
       render :edit
     end
   end
