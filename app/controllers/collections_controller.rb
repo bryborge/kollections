@@ -28,6 +28,7 @@ class CollectionsController < ApplicationController
     if @collection.save
       redirect_to @collection, notice: I18n.t('notices.collection_created')
     else
+      flash.now[:alert] = I18n.t('alerts.collection_not_created')
       render :new
     end
   end
@@ -37,6 +38,7 @@ class CollectionsController < ApplicationController
     if @collection.update(collection_params)
       redirect_to @collection, notice: I18n.t('notices.collection_updated')
     else
+      flash.now[:alert] = I18n.t('alerts.collection_not_updated')
       render :edit
     end
   end
@@ -50,7 +52,11 @@ class CollectionsController < ApplicationController
   private
 
   def set_collection
-    @collection = current_user.collections.find(params[:id])
+    @collection = current_user.collections.find_by(id: params[:id])
+
+    return if @collection
+
+    redirect_to collections_url, alert: I18n.t('alerts.collection_not_found')
   end
 
   def collection_params

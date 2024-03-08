@@ -37,5 +37,9 @@ en:
     item_destroyed: "Item was successfully destroyed."
   alerts:
     collection_not_found: "Collection not found."
+    collection_not_created: "Collection was not created."
+    collection_not_updated: "Collection was not updated."
     item_not_found: "Item not found."
+    item_not_created: "Item was not created."
+    item_not_updated: "Item was not updated."
     item_not_destroyed: "Item could not be destroyed."
