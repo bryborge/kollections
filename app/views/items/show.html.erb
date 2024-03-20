@@ -10,6 +10,13 @@
   <p>Acquired on: <%= @item.acquisition_date.strftime('%b %e, %Y') %></p>
 <% end %>
 
+<% @item.properties.each do |property| %>
+  <div>
+    <strong><%= property.name %>:</strong>
+    <%= property.value %>
+  </div>
+<% end %>
+
 <div class="d-flex">
   <%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
 </div>

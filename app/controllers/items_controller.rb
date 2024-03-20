@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   # GET /collections/:collection_id/items/new
   def new
     @item = @collection.items.build
+    build_properties_for_collection(@collection)
   end
 
   # GET /collections/:collection_id/items/:id/edit
@@ -61,6 +62,17 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :acquisition_date)
+    params.require(:item).permit(:name, :description, :acquisition_date,
+                                 properties_attributes: %i[id name value _destroy])
+  end
+
+  def build_properties_for_collection(collection)
+    collection_type_properties = Collection::COLLECTION_PROPERTIES[collection.kind]
+
+    return unless collection_type_properties
+
+    collection_type_properties.each do |property_name|
+      @item.properties.build(name: property_name)
+    end
   end
 end

@@ -1,4 +1,4 @@
-<h1>New Item</h1>
+<h1>New <%= @collection.name %></h1>
 
 <%= form_with(model: [@collection, @item], local: true) do |form| %>
   <% if @item.errors.any? %>
@@ -27,6 +27,14 @@
     <%= form.label :acquisition_date, class: "form-label" %>
     <%= form.text_field :acquisition_date, class: "form-control" %>
   </div>
+
+  <%= form.fields_for :properties do |prop_form| %>
+    <div class="mb-3">
+      <%= prop_form.label prop_form.object.name, class: "form-label" %>
+      <%= prop_form.hidden_field :name %>
+      <%= prop_form.text_field :value, class: "form-control" %>
+    </div>
+  <% end %>
 
   <div class="d-flex">
     <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
