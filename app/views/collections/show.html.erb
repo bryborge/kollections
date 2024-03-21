@@ -1,15 +1,16 @@
 <%= render 'collections/partials/tabnav' %>
 
-<h1><%= @collection.name.titleize %></h1>
-<span class="badge pill text-bg-dark"><%= @collection.kind %></span>
+<h1 class="h2"><%= @collection.name.titleize %></h1>
+<span class="badge rounded-pill text-bg-primary""><%= @collection.items.count %></span>
+<span class="badge rounded-pill border border-dark text-dark"><%= @collection.kind %></span>
+
+<hr class="border-secondary">
 
 <h2 class="h3">Description</h2>
 
 <% if @collection.description %>
   <p><%= @collection.description %></p>
 <% end %>
-
-<p>Total items: <%= @collection.items.count %></p>
 
 <% if @collection.items.any? %>
   <table class="table table-hover">
