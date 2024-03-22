@@ -21,13 +21,6 @@ RSpec.describe Item do
     expect(no_name_item.errors[:name]).to include("can't be blank")
   end
 
-  # it 'requires an acquisition date' do
-  #   no_aq_date_item = described_class.new(name: 'My Item', collection_id: collection.id, acquisition_date: '')
-
-  #   expect(no_aq_date_item).not_to be_valid
-  #   expect(no_aq_date_item.errors[:acquisition_date]).to include("can't be blank")
-  # end
-
   describe 'associations' do
     it 'belongs to a collection' do
       expect(item).to be_valid

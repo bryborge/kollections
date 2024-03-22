@@ -30,11 +30,10 @@ RSpec.describe 'Items' do
         expect(response).to have_http_status(:ok)
       end
 
-      # TODO: Refactor flakey test ... capitalization is causing intermittent failure i think
-      # it 'renders the show page' do
-      #   get collection_item_path(collection, item)
-      #   expect(response.body).to include(item.name.titleize)
-      # end
+      it 'renders the show page' do
+        get collection_item_path(collection, item)
+        expect(response.body).to include(CGI.escapeHTML(item.name.titleize))
+      end
     end
 
     context 'when the item does not exist' do
