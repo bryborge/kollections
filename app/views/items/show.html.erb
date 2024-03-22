@@ -8,15 +8,6 @@
   </div>
 
   <div class="col-sm-8">
-    <% @item.properties.each do |property| %>
-      <% unless property.value.blank? %>
-        <div>
-          <strong><%= property.name %>:</strong>
-          <%= property.value %>
-        </div>
-      <% end %>
-    <% end %>
-
     <div>
       <strong>Collected: </strong> <%= @item.collected? ? "✅" : "❗" %>
     </div>

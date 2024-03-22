@@ -17,11 +17,6 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <% if Collection::COLLECTION_PROPERTIES[@collection.kind] %>
-          <% Collection::COLLECTION_PROPERTIES[@collection.kind].each do |property_name| %>
-            <th scope="col"><%= property_name %></th>
-          <% end %>
-        <% end %>
         <th scope="col">Collected</th>
         <th scope="col"></th>
       </tr>
@@ -30,9 +25,6 @@
       <% @collection.items.each do |item| %>
         <tr>
           <td><%= link_to item.name, collection_item_path(@collection, item) %></td>
-          <% item.properties.each do |property| %>
-            <td><%= property.value %></td>
-          <% end %>
           <td><%= item.collected? ? "✅" : "❗" %></td>
           <td>
             <%= link_to "Edit", edit_collection_item_path(@collection, item), class: "btn btn-sm btn-warning" %>
