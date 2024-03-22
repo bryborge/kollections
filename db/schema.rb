@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_044607) do
     t.string "name", null: false
     t.text "description"
     t.boolean "collected", default: false, null: false
+    t.jsonb "properties", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_items_on_collection_id"
