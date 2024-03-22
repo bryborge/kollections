@@ -22,7 +22,7 @@
             <th scope="col"><%= property_name %></th>
           <% end %>
         <% end %>
-        <th scope="col">Acquisition Date</th>
+        <th scope="col">Collected</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -33,7 +33,7 @@
           <% item.properties.each do |property| %>
             <td><%= property.value %></td>
           <% end %>
-          <td><%= item.acquisition_date.strftime('%b %e, %Y') %></td>
+          <td><%= item.collected? ? "✅" : "❗" %></td>
           <td>
             <%= link_to "Edit", edit_collection_item_path(@collection, item), class: "btn btn-sm btn-warning" %>
           </td>

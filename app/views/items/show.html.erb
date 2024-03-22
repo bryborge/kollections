@@ -1,21 +1,37 @@
 <%= render 'items/partials/tabnav' %>
 
-<h1><%= @item.name.titleize %></h1>
+<h1 class="h2"><%= @item.name.titleize %></h1>
 
-<% unless @item.description.blank? %>
-  <p><%= @item.description %></p>
-<% end %>
-
-<% unless @item.acquisition_date.blank? %>
-  <p>Acquired on: <%= @item.acquisition_date.strftime('%b %e, %Y') %></p>
-<% end %>
-
-<% @item.properties.each do |property| %>
-  <div>
-    <strong><%= property.name %>:</strong>
-    <%= property.value %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag 'comic_cover_template.jpg', alt: 'Image of generic comic book cover', width: '100%', height: '100%' %>
   </div>
-<% end %>
+
+  <div class="col-sm-8">
+    <% @item.properties.each do |property| %>
+      <% unless property.value.blank? %>
+        <div>
+          <strong><%= property.name %>:</strong>
+          <%= property.value %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <!-- TODO: TURN ACQUISITION DATE INTO A BOOL EXPRESSION INSTEAD. Do I own it? Yes/No -->
+    <div>
+      <strong>Collected: </strong> <%= @item.collected? ? "✅" : "❗" %>
+    </div>
+
+    <br>
+
+    <% unless @item.description.blank? %>
+      <div>
+        <strong>Description </strong>
+        <p><%= @item.description %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <div class="d-flex">
   <%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>

@@ -1,46 +1,52 @@
 <%= render 'items/partials/tabnav' %>
 
-<h1><%= @item.name.titleize %></h1>
-
 <h2 class="h3">General</h2>
 
 <ul class="list-group mb-4">
   <li class="list-group-item">
     <%= form_with(model: [@collection, @item], local: true) do |form| %>
-    <% if @item.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <% if @item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-        <ul>
-        <% @item.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
+          <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="mb-3 form-check">
+        <%= form.check_box :collected, class: "form-check-input", id: "collected-check-box", checked: @item.collected? %>
+        <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
+      </div>
+
+      <%= form.fields_for :properties do |prop_form| %>
+        <div class="mb-3">
+          <%= prop_form.label prop_form.object.name, class: "form-label" %>
+          <%= prop_form.hidden_field :name %>
+          <%= prop_form.text_field :value, class: "form-control" %>
+        </div>
+      <% end %>
+
+      <div class="d-flex">
+        <%= link_to "Cancel", collection_item_path(@collection, @item), class: "btn btn-outline-secondary me-2", role: "button" %>
+        <div class="actions">
+          <%= form.submit "Update", class: "btn btn-primary" %>
+        </div>
       </div>
     <% end %>
-
-    <div class="mb-3">
-      <%= form.label :name, class: "form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :description, class: "form-label" %>
-      <%= form.text_area :description, class: "form-control" %>
-    </div>
-
-    <div class="mb-3">
-      <%= form.label :acquisition_date, class: "form-label" %>
-      <%= form.text_field :acquisition_date, class: "form-control" %>
-    </div>
-
-    <div class="d-flex">
-      <%= link_to "Cancel", collection_item_path(@collection, @item), class: "btn btn-outline-secondary me-2", role: "button" %>
-      <div class="actions">
-        <%= form.submit "Update", class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
   </li>
 </ul>
 

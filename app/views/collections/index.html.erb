@@ -16,7 +16,9 @@
             <p><%= collection.description %></p>
           </div>
           <div>
-            <span class="badge rounded-pill text-bg-primary""><%= collection.items.count %></span>
+            <span class="badge rounded-pill text-bg-primary collection" data-collection-id="<%= collection.id %>">
+              <%= collection.items.count %>
+            </span>
             <span class="badge rounded-pill border border-dark text-dark"><%= collection.kind %></span>
             <small class="text-body-secondary ms-2">Updated <%= time_ago_in_words(collection.updated_at) %> ago</small>
           </div>

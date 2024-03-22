@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :acquisition_date,
+    params.require(:item).permit(:name, :description, :collected,
                                  properties_attributes: %i[id name value _destroy])
   end
 

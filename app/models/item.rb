@@ -7,5 +7,4 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :properties, allow_destroy: true
 
   validates :name, presence: true
-  validates :acquisition_date, presence: true
 end

@@ -23,9 +23,9 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :acquisition_date, class: "form-label" %>
-    <%= form.text_field :acquisition_date, class: "form-control" %>
+  <div class="mb-3 form-check">
+    <%= form.check_box :collected, class: "form-check-input", id: "collected-check-box" %>
+    <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
   </div>
 
   <%= form.fields_for :properties do |prop_form| %>
