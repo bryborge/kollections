@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Properties on Items of a give Collection "kind".
+# Collection Properties ...
 module CollectionProperties
+  # ... on Items of a give Collection "kind".
   def self.defaults_for(kind)
     {
       'comics' => {
@@ -10,6 +11,12 @@ module CollectionProperties
       },
       'movies' => {
         'director' => nil
+      },
+      'music' => {
+        'artist' => nil
+      },
+      'books' => {
+        'author' => nil
       }
     }[kind] || {}
   end

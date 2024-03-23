@@ -13,6 +13,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/environments/**/*'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'app/lib/collection_properties.rb'
+
 RSpec/ExampleLength:
   Exclude:
     - 'spec/system/**/*'

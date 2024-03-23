@@ -20,9 +20,9 @@
     <hr>
 
     <% unless @item.properties.empty? %>
-      <% @item.properties.each do |key, val| %>
-        <p><strong><%= key.capitalize %>: </strong><%= val %></p>
-      <% end %>
+    <% @item.properties.each do |key, value| %>
+      <p><strong><%= key.capitalize %>: </strong><%= value.blank? ? "No #{key} provided." : value %></p>
+    <% end %>
     <% end %>
 
     <div>
