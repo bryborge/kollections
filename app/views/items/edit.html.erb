@@ -32,13 +32,11 @@
         <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
       </div>
 
-      <% unless @item.properties.empty? %>
-        <% @item.properties.each do |key, val| %>
-          <div class="mb-3">
-            <%= form.label "properties[#{key}]", key.humanize, class: "form-label" %>
-            <%= text_field_tag "item[properties][#{key}]", val, class: "form-control" %>
-          </div>
-        <% end %>
+      <% @item.properties.each do |key, value| %>
+        <div class="mb-3">
+          <%= form.label "properties[#{key}]", key.humanize, class: "form-label" %>
+          <%= text_field_tag "item[properties][#{key}]", value, class: "form-control" %>
+        </div>
       <% end %>
 
 

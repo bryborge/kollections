@@ -11,8 +11,7 @@ class ItemsController < ApplicationController
 
   # GET /collections/:collection_id/items/new
   def new
-    @item = @collection.items.build
-    # build_properties_for_collection(@collection)
+    @item = @collection.items.build(properties: default_properties_for_collection)
   end
 
   # GET /collections/:collection_id/items/:id/edit
@@ -63,5 +62,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :collected, properties: {})
+  end
+
+  def default_properties_for_collection
+    CollectionProperties.defaults_for(@collection.kind)
   end
 end

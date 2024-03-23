@@ -28,6 +28,13 @@
     <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
   </div>
 
+  <% @item.properties.each do |key, value| %>
+    <div class="mb-3">
+      <%= form.label "properties[#{key}]", key.humanize, class: "form-label" %>
+      <%= text_field_tag "item[properties][#{key}]", value, class: "form-control" %>
+    </div>
+  <% end %>
+
   <div class="d-flex">
     <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>
     <div class="actions">

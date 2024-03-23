@@ -9,10 +9,6 @@
 
   <div class="col-sm-8">
     <div>
-      <strong>Collected:</strong> <%= @item.collected? ? "✅" : "❗" %>
-    </div>
-
-    <div>
       <strong>Description:</strong>
       <% unless @item.description.blank? %>
         <p><%= @item.description %></p>
@@ -21,13 +17,18 @@
       <% end %>
     </div>
 
-    <br>
+    <hr>
 
     <% unless @item.properties.empty? %>
       <% @item.properties.each do |key, val| %>
-        <strong><%= key.capitalize %>: </strong><p><%= val %></p>
+        <p><strong><%= key.capitalize %>: </strong><%= val %></p>
       <% end %>
     <% end %>
+
+    <div>
+      <p><strong>Collected:</strong> <%= @item.collected? ? "✅" : "❗" %></p>
+    </div>
+
   </div>
 </div>
 
