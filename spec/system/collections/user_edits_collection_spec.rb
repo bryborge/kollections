@@ -12,7 +12,7 @@ RSpec.describe 'User edits a collection' do
   it 'with valid attributes' do
     fill_in 'Name', with: 'Comic Books'
     fill_in 'Description', with: 'This is my entire comic book collection.'
-    fill_in 'Kind', with: 'comics'
+    select 'comics', from: 'Kind'
     click_button 'Update'
 
     expect(page).to have_current_path(collection_path(collection))
@@ -22,7 +22,7 @@ RSpec.describe 'User edits a collection' do
   it 'with invalid attributes' do
     fill_in 'Name', with: ''
     fill_in 'Description', with: 'This is my entire comic book collection.'
-    fill_in 'Kind', with: ''
+    select 'comics', from: 'Kind'
     click_button 'Update'
 
     expect(page).to have_current_path(collection_path(collection))

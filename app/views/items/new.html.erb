@@ -28,11 +28,10 @@
     <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
   </div>
 
-  <%= form.fields_for :properties do |prop_form| %>
+  <% @item.properties.each do |key, value| %>
     <div class="mb-3">
-      <%= prop_form.label prop_form.object.name, class: "form-label" %>
-      <%= prop_form.hidden_field :name %>
-      <%= prop_form.text_field :value, class: "form-control" %>
+      <%= form.label "properties[#{key}]", key.humanize, class: "form-label" %>
+      <%= text_field_tag "item[properties][#{key}]", value, class: "form-control" %>
     </div>
   <% end %>
 

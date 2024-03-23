@@ -8,27 +8,27 @@
   </div>
 
   <div class="col-sm-8">
-    <% @item.properties.each do |property| %>
-      <% unless property.value.blank? %>
-        <div>
-          <strong><%= property.name %>:</strong>
-          <%= property.value %>
-        </div>
+    <div>
+      <strong>Description:</strong>
+      <% unless @item.description.blank? %>
+        <p><%= @item.description %></p>
+      <% else %>
+        <p>No description available for this item.</p>
       <% end %>
+    </div>
+
+    <hr>
+
+    <% unless @item.properties.empty? %>
+    <% @item.properties.each do |key, value| %>
+      <p><strong><%= key.capitalize %>: </strong><%= value.blank? ? "No #{key} provided." : value %></p>
+    <% end %>
     <% end %>
 
     <div>
-      <strong>Collected: </strong> <%= @item.collected? ? "✅" : "❗" %>
+      <p><strong>Collected:</strong> <%= @item.collected? ? "✅" : "❗" %></p>
     </div>
 
-    <br>
-
-    <% unless @item.description.blank? %>
-      <div>
-        <strong>Description </strong>
-        <p><%= @item.description %></p>
-      </div>
-    <% end %>
   </div>
 </div>
 

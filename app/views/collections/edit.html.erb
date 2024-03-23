@@ -29,7 +29,7 @@
 
     <div class="mb-3">
       <%= form.label :kind, class: "form-label" %>
-      <%= form.text_field :kind, class: "form-control" %>
+      <%= form.select :kind, options_for_select(['generic', 'comics', 'movies', 'music', 'books'], @collection.kind), {}, { class: 'form-select' } %>
     </div>
 
     <div class="d-flex">

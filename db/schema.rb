@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_08_061543) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_12_044607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,19 +29,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_061543) do
     t.string "name", null: false
     t.text "description"
     t.boolean "collected", default: false, null: false
+    t.jsonb "properties", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_items_on_collection_id"
-  end
-
-  create_table "properties", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "value", null: false
-    t.string "propertiable_type"
-    t.bigint "propertiable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["propertiable_type", "propertiable_id"], name: "index_properties_on_propertiable"
   end
 
   create_table "users", force: :cascade do |t|

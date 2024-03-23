@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[7.1]
       t.string :name, null: false
       t.text :description
       t.boolean :collected, null: false, default: false
+      t.jsonb :properties, null: false, default: {}
 
       t.timestamps
     end

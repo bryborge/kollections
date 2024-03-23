@@ -11,8 +11,7 @@ class ItemsController < ApplicationController
 
   # GET /collections/:collection_id/items/new
   def new
-    @item = @collection.items.build
-    build_properties_for_collection(@collection)
+    @item = @collection.items.build(properties: default_properties_for_collection)
   end
 
   # GET /collections/:collection_id/items/:id/edit
@@ -62,17 +61,10 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :collected,
-                                 properties_attributes: %i[id name value _destroy])
+    params.require(:item).permit(:name, :description, :collected, properties: {})
   end
 
-  def build_properties_for_collection(collection)
-    collection_type_properties = Collection::COLLECTION_PROPERTIES[collection.kind]
-
-    return unless collection_type_properties
-
-    collection_type_properties.each do |property_name|
-      @item.properties.build(name: property_name)
-    end
+  def default_properties_for_collection
+    CollectionProperties.defaults_for(@collection.kind)
   end
 end
