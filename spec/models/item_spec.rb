@@ -21,6 +21,10 @@ RSpec.describe Item do
     expect(no_name_item.errors[:name]).to include("can't be blank")
   end
 
+  it 'has a default value for properties' do
+    expect(item.properties).to eq({})
+  end
+
   describe 'associations' do
     it 'belongs to a collection' do
       expect(item).to be_valid
