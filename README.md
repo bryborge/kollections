@@ -25,7 +25,7 @@ user-friendly interface to catalog and showcase these items.
 
 *   Ruby
 *   Rails
-*   MySQL
+*   Postgresql
 
 ### Installation
 
