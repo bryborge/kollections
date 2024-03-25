@@ -15,7 +15,7 @@ user-friendly interface to catalog and showcase these items.
 ## Technology Stack
 
 **Ruby on Rails:** The application is built with Ruby on Rails.
-**MySQL:** Database management.
+**Postgresql:** Database management.
 **Bootstrap:** For styling and responsive design.
 **RSpec:** Used for writing and running tests.
 
