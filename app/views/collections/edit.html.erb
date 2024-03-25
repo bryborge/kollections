@@ -1,4 +1,4 @@
-<%= render 'collections/partials/tabnav' %>
+<%= render "collections/partials/tabnav" %>
 
 <h2 class="h3">General</h2>
 
@@ -29,7 +29,12 @@
 
     <div class="mb-3">
       <%= form.label :kind, class: "form-label" %>
-      <%= form.select :kind, options_for_select(['generic', 'comics', 'movies', 'music', 'books'], @collection.kind), {}, { class: 'form-select' } %>
+      <%= form.select :kind, options_for_select(["generic", "comics", "movies", "music", "books"],
+                             @collection.kind), {}, { class: "form-select",
+                             disabled: @collection.items.any? ? true : false } %>
+      <% if @collection.items.any? %>
+        <small class="form-text text-muted">Note: You can only change a collection's kind if no items belong to the collection.</small>
+      <% end %>
     </div>
 
     <div class="d-flex">
