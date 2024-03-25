@@ -9,14 +9,3 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
-user = User.find_by(email: 'bryborge@gmail.com')
-
-if user
-  Collection.find_or_create_by!(name: 'Comic Book', kind: 'comics', user_id: user.id)
-  Collection.find_or_create_by!(name: 'Movie', kind: 'movies', user_id: user.id)
-  Collection.find_or_create_by!(name: 'Music', kind: 'music', user_id: user.id)
-  Collection.find_or_create_by!(name: 'Book', kind: 'books', user_id: user.id)
-else
-  Rails.logger.debug 'Failed to Seed: Create the user first!'
-end
