@@ -32,7 +32,7 @@ RSpec.describe 'Items' do
 
       it 'renders the show page' do
         get collection_item_path(collection, item)
-        expect(response.body).to include(item.name.titleize)
+        expect(response.body).to include(CGI.escapeHTML(item.name.titleize))
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe 'Items' do
       expect(response.body).to include('form')
       expect(response.body).to include('name="item[name]"')
       expect(response.body).to include('name="item[description]"')
-      expect(response.body).to include('name="item[acquisition_date]"')
+      expect(response.body).to include('name="item[collected]"')
     end
   end
 

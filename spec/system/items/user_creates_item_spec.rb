@@ -12,7 +12,7 @@ RSpec.describe 'User creates item within a collection' do
   it 'with valid attributes' do
     fill_in 'Name', with: 'Preacher'
     fill_in 'Description', with: 'This is issue 1 of the comic book series "Preacher" by Garth Ennis.'
-    fill_in 'Acquisition date', with: '2024-02-16'
+    check 'Collected'
     click_button 'Create'
 
     item = Item.last
@@ -24,7 +24,7 @@ RSpec.describe 'User creates item within a collection' do
   it 'with invalid attributes' do
     fill_in 'Name', with: ''
     fill_in 'Description', with: 'This is issue 1 of the comic book series "Preacher" by Garth Ennis.'
-    fill_in 'Acquisition date', with: ''
+    check 'Collected'
     click_button 'Create'
 
     expect(page).to have_current_path(collection_items_path(collection))

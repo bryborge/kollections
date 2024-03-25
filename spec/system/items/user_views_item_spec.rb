@@ -22,7 +22,7 @@ RSpec.describe 'User views an item within a collection' do
     before { visit collection_item_path(collection, id: item.id) }
 
     it 'displays the item details' do
-      expect(page).to have_content('Acquired on')
+      expect(page).to have_content('Description')
     end
   end
 end

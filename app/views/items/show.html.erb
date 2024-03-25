@@ -1,14 +1,36 @@
 <%= render 'items/partials/tabnav' %>
 
-<h1><%= @item.name.titleize %></h1>
+<h1 class="h2"><%= @item.name.titleize %></h1>
 
-<% unless @item.description.blank? %>
-  <p><%= @item.description %></p>
-<% end %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag 'no_photo_available.svg', alt: 'Image of generic comic book cover', width: '100%', height: '100%' %>
+  </div>
 
-<% unless @item.acquisition_date.blank? %>
-  <p>Acquired on: <%= @item.acquisition_date.strftime('%b %e, %Y') %></p>
-<% end %>
+  <div class="col-sm-8">
+    <div>
+      <strong>Description:</strong>
+      <% unless @item.description.blank? %>
+        <p><%= @item.description %></p>
+      <% else %>
+        <p>No description available for this item.</p>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <% unless @item.properties.empty? %>
+    <% @item.properties.each do |key, value| %>
+      <p><strong><%= key.capitalize %>: </strong><%= value.blank? ? "No #{key} provided." : value %></p>
+    <% end %>
+    <% end %>
+
+    <div>
+      <p><strong>Collected:</strong> <%= @item.collected? ? "✅" : "❗" %></p>
+    </div>
+
+  </div>
+</div>
 
 <div class="d-flex">
   <%= link_to "Back to Collection", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>

@@ -1,4 +1,4 @@
-<h1>New Item</h1>
+<h1>New <%= @collection.name %></h1>
 
 <%= form_with(model: [@collection, @item], local: true) do |form| %>
   <% if @item.errors.any? %>
@@ -23,10 +23,17 @@
     <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :acquisition_date, class: "form-label" %>
-    <%= form.text_field :acquisition_date, class: "form-control" %>
+  <div class="mb-3 form-check">
+    <%= form.check_box :collected, class: "form-check-input", id: "collected-check-box" %>
+    <%= form.label :collected, class: "form-check-label", for: "collected-check-box" %>
   </div>
+
+  <% @item.properties.each do |key, value| %>
+    <div class="mb-3">
+      <%= form.label "properties[#{key}]", key.humanize, class: "form-label" %>
+      <%= text_field_tag "item[properties][#{key}]", value, class: "form-control" %>
+    </div>
+  <% end %>
 
   <div class="d-flex">
     <%= link_to "Cancel", collection_path(@collection), class: "btn btn-outline-secondary me-2", role: "button" %>

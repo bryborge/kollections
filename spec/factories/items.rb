@@ -6,6 +6,6 @@ FactoryBot.define do
 
     name { Faker::Book.title }
     description { Faker::Lorem.paragraph }
-    acquisition_date { Time.zone.today }
+    collected { true }
   end
 end

@@ -3,10 +3,11 @@
 class CreateItems < ActiveRecord::Migration[7.1]
   def change
     create_table :items do |t|
-      t.integer :collection_id
+      t.references :collection, null: false, foreign_key: true
       t.string :name, null: false
       t.text :description
-      t.date :acquisition_date
+      t.boolean :collected, null: false, default: false
+      t.jsonb :properties, null: false, default: {}
 
       t.timestamps
     end
