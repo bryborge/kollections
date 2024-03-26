@@ -3,3 +3,16 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "popper"
 import "bootstrap"
+
+// Delete [Collection | Item] confirmation dialog box
+//   e.g. app/views/collections/edit.html.erb
+document.addEventListener("turbo:click", function(event) {
+  const element = event.target
+  const confirmMessage = element.getAttribute("data-turbo-confirm")
+  if (!confirmMessage || window.confirm(confirmMessage)) {
+    return true
+  }
+
+  event.preventDefault()
+  return false
+})

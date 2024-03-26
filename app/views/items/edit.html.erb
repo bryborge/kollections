@@ -62,7 +62,7 @@
     <div class="flex-md-order-1 flex-order-2">
       <%= button_to "Delete Item", collection_item_path(@collection, @item),
                     method: :delete,
-                    data: { confirm: "Are you sure you want to delete this collection?" },
+                    data: { turbo_confirm: "Are you sure you want to delete this collection?" },
                     class: "btn btn-danger", role: "button" %>
     </div>
   </li>
